@@ -45,6 +45,6 @@ export function figuresReducer(
   return state;
 }
 
-export const getPizzasLoading = (state: FigureState) => state.loading;
-export const getPizzasLoaded = (state: FigureState) => state.loaded;
-export const getPizzas = (state: FigureState) => state.data;
+export const getLoading = (state: FigureState) => state.loading;
+export const getLoaded = (state: FigureState) => state.loaded;
+export const getFigure = (state: FigureState) => state.data;
