@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {FiguresActions} from '@app/core/store';
+import {DataActions} from '@app/core/store';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent {
   }
 
   onClick() {
-    this.store.dispatch(new FiguresActions.LoadSuccess());
+    this.store.dispatch(new DataActions.StartLoading());
   }
 }
 

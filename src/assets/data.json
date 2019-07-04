@@ -1,7 +1,15 @@
-{
-  "distanceX": 20,
-  "distanceY": 30,
-  "intervalsBetweenDates": 10,
-  "fontSize": "18px"
-}
+[
+  {
+    "id": 0,
+    "name": "circle",
+    "area": 10,
+    "perimeter": 18
+  },
+  {
+    "id": 1,
+    "name": "circle",
+    "area": 11,
+    "perimeter": 18
+  }
+]
 

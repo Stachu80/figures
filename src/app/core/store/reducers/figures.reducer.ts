@@ -1,13 +1,13 @@
-import * as fromFigures from '../actions/figures.action';
-import {Figure} from '../../models/figure.model';
+import * as fromFigures from '../actions/data.action';
+import { Figure } from '../../models/figure.model';
 
-export interface FigureState {
+export interface DataState {
   data: Figure[];
   loaded: boolean;
   loading: boolean;
 }
 
-export const initialState: FigureState = {
+export const initialState: DataState = {
   data: [],
   loaded: false,
   loading: false,
@@ -16,9 +16,9 @@ export const initialState: FigureState = {
 export function figuresReducer(
   state = initialState,
   action: fromFigures.Actions
-): FigureState {
+): DataState {
   switch (action.type) {
-    case fromFigures.ActionTypes.LoadSuccess: {
+    case fromFigures.ActionTypes.StartLoading: {
       return {
         ...state,
         loading: true,
@@ -28,12 +28,14 @@ export function figuresReducer(
     case fromFigures.ActionTypes.LoadSuccess: {
       return {
         ...state,
+        data: action.payload,
         loading: false,
-        loaded: true,
+        loaded: true
       };
     }
 
     case fromFigures.ActionTypes.LoadFailure: {
+      console.error('Error: ', action.payload)
       return {
         ...state,
         loading: false,
@@ -45,6 +47,6 @@ export function figuresReducer(
   return state;
 }
 
-export const getLoading = (state: FigureState) => state.loading;
-export const getLoaded = (state: FigureState) => state.loaded;
-export const getFigure = (state: FigureState) => state.data;
+export const getLoading = (state: DataState) => state.loading;
+export const getLoaded = (state: DataState) => state.loaded;
+export const getFigure = (state: DataState) => state.data;

@@ -1,5 +1,5 @@
-import * as FiguresActions from './figures.action';
+import * as DataActions from './data.action';
 
 export {
-  FiguresActions,
+  DataActions
 };
