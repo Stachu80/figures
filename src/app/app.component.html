@@ -1,10 +1,14 @@
-<h1>
-  {{title}}
-</h1>
-<button routerLink="/selection">Selection</button>
-<button routerLink="/welcome">Welcome</button>
-<button routerLink="">Home</button>
-<button (click)="onClick()">test</button>
-
-
-<router-outlet></router-outlet>
+<div *ngIf="loadingStatus$ | async; then appView; else preloaderView"></div>
+<ng-template #preloaderView>
+   <mat-spinner></mat-spinner>
+</ng-template>
+<ng-template #appView>
+  <h1>
+    {{ title }}
+  </h1>
+<!--   <button routerLink="/selection">Selection</button>
+  <button routerLink="/welcome">Welcome</button>
+  <button routerLink="">Home</button>
+  <button (click)="onClick()">test</button> -->
+  <router-outlet></router-outlet>
+</ng-template>

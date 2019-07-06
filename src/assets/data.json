@@ -1,13 +1,13 @@
 [
   {
     "id": 0,
-    "name": "circle",
+    "name": "koło",
     "area": 10,
     "perimeter": 18
   },
   {
     "id": 1,
-    "name": "circle",
+    "name": "kwadrat",
     "area": 11,
     "perimeter": 18
   }
