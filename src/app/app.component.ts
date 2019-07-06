@@ -1,20 +1,24 @@
-import {Component} from '@angular/core';
-import {Store} from '@ngrx/store';
-import {DataActions} from '@app/core/store';
+import { Component, OnInit } from "@angular/core";
+import { Store, select } from "@ngrx/store";
+import { DataActions } from "@app/core/store";
+import { FiguresSelector } from "./core/store/selectors";
+import { tap } from "rxjs/internal/operators";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
-export class AppComponent {
-  title = 'figures-app';
+export class AppComponent implements OnInit {
+  title = "figures-app";
+  loadingStatus$ = this.store.pipe(
+    select(FiguresSelector.getLoadingStatus),
+    tap(v => console.log(v))
+  );
+  constructor(private store: Store<any>) {}
 
-  constructor(private store: Store<any>) {
-  }
-
-  onClick() {
+  ngOnInit() {
+    console.log("get Data");
     this.store.dispatch(new DataActions.StartLoading());
   }
 }
-
