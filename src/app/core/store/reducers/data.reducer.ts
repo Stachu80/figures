@@ -1,4 +1,4 @@
-import * as fromFigures from '../actions/data.action';
+import * as fromData from '../actions/data.action';
 import { Figure } from '../../models/figure.model';
 
 export interface DataState {
@@ -13,19 +13,19 @@ export const initialState: DataState = {
   loading: false,
 };
 
-export function figuresReducer(
+export function DataReducer(
   state = initialState,
-  action: fromFigures.Actions
+  action: fromData.Actions
 ): DataState {
   switch (action.type) {
-    case fromFigures.ActionTypes.StartLoading: {
+    case fromData.ActionTypes.StartLoading: {
       return {
         ...state,
         loading: true,
       };
     }
 
-    case fromFigures.ActionTypes.LoadSuccess: {
+    case fromData.ActionTypes.LoadSuccess: {
       return {
         ...state,
         data: action.payload,
@@ -34,8 +34,7 @@ export function figuresReducer(
       };
     }
 
-    case fromFigures.ActionTypes.LoadFailure: {
-      console.error('Error: ', action.payload)
+    case fromData.ActionTypes.LoadFailure: {
       return {
         ...state,
         loading: false,
@@ -49,4 +48,4 @@ export function figuresReducer(
 
 export const getLoading = (state: DataState) => state.loading;
 export const getLoaded = (state: DataState) => state.loaded;
-export const getFigure = (state: DataState) => state.data;
+export const getAllFigures = (state: DataState) => state.data;

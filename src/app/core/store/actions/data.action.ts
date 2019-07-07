@@ -1,9 +1,9 @@
 import {Action} from '@ngrx/store';
 
 export enum ActionTypes {
-  LoadSuccess = '[Figures] Data Load Success',
-  StartLoading = '[Figures] Data Start Loading',
-  LoadFailure = '[Figures] Data Load Failure',
+  LoadSuccess = '[Data] Load Success',
+  StartLoading = '[Data] Start Loading',
+  LoadFailure = '[Data] Load Failure',
 }
 
 

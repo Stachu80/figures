@@ -1,8 +1,11 @@
-<h4>Basic mat-select</h4>
 <mat-form-field>
   <mat-label>Wybierz figurę</mat-label>
   <mat-select>
-    <mat-option *ngFor="let item of data$|async;  let i =index" [value]="item.id">
+    <mat-option
+      *ngFor="let item of data"
+      [value]="item.name"
+      (onSelectionChange)="figureSelected($event, item)"
+      >
       {{item.name}}
     </mat-option>
   </mat-select>

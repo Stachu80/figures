@@ -1,15 +1,59 @@
 [
   {
     "id": 0,
-    "name": "koło",
-    "area": 10,
-    "perimeter": 18
+    "name": "Koło",
+    "area": {
+      "formula": "Math.PI*r*r",
+      "param": ["r"],
+      "description": ["promień"]
+    },
+    "circumference": {
+      "formula": "2*Math.PI*r",
+      "param": ["r"],
+      "description": ["promień"]
+    }
   },
   {
     "id": 1,
-    "name": "kwadrat",
-    "area": 11,
-    "perimeter": 18
+    "name": "Kwadrat",
+    "area": { "formula": "a*a", "param": ["a"], "description": ["długość boku"] },
+    "circumference": {
+      "formula": "4*a",
+      "param": ["a"],
+      "description": ["długość boku"]
+    }
+  },
+  {
+    "id": 2,
+    "name": "Prostokąt",
+    "area": {
+      "formula": "a*b",
+      "param": ["a,b"],
+      "description": ["długość boku a", "długość boku b"]
+    },
+    "circumference": {
+      "formula": "2*a+2*b",
+      "param": ["a","b"],
+      "description": ["długość boku a", "długość boku b"]
+    }
+  },
+  {
+    "id": 3,
+    "name": "Trapez",
+    "area": {
+      "formula": "((a+b)*h)/2",
+      "param": ["a", "b", "h"],
+      "description": ["długość boku a", "długość boku b", "wysokość"]
+    },
+    "circumference": {
+      "formula": "a+b+c+d",
+      "param": ["a", "b"],
+      "description": [
+        "długość boku a",
+        "długość boku b",
+        "długość boku c",
+        "długość boku b"
+      ]
+    }
   }
 ]
-
