@@ -1,12 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { DataSelector, FigureSelector } from "@app/core/store/selectors";
-import { select, Store } from "@ngrx/store";
-import { tap } from "rxjs/internal/operators";
+import { Component, OnInit } from '@angular/core';
+import { DataSelector, FigureSelector } from '@app/core/store/selectors';
+import { select, Store } from '@ngrx/store';
 
 @Component({
-  selector: "app-main",
-  templateUrl: "./main.component.html",
-  styleUrls: ["./main.component.scss"]
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
   data$ = this.store.pipe(select(DataSelector.getData));
@@ -16,7 +15,10 @@ export class MainComponent implements OnInit {
   );
 
   figure$ = this.store.pipe(select(FigureSelector.getFigure));
-  constructor(private store: Store<any>) {}
 
-  ngOnInit() {}
+  constructor(private store: Store<any>) {
+  }
+
+  ngOnInit() {
+  }
 }

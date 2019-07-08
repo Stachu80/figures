@@ -16,3 +16,15 @@ export const getCalculationType = createSelector(
   getFigureState,
   fromFigure.getSelectedCalculationType
 );
+
+export const getCalculatedFigure = createSelector(
+  getFigure,
+  getCalculationType,
+  (figure, calculationType) => {
+
+    return {
+      ...figure,
+      test: true
+    }
+  }
+);

@@ -28,7 +28,7 @@
     "name": "Prostokąt",
     "area": {
       "formula": "a*b",
-      "param": ["a,b"],
+      "param": ["a","b"],
       "description": ["długość boku a", "długość boku b"]
     },
     "circumference": {
