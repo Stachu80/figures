@@ -1,5 +1,7 @@
-import * as  FiguresSelector from './figures.selector';
+import * as  DataSelector from './data.selector';
+import * as  FigureSelector from './figure.selector';
 
 export {
-  FiguresSelector,
+  DataSelector,
+  FigureSelector
 };

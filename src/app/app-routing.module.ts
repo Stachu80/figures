@@ -3,17 +3,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: "welcome",
-    loadChildren: "./welcome/welcome.module#WelcomeModule"
+    path: 'figure',
+    loadChildren: './figure-calculation/figure-calculation.module#FigureCalculationModule'
   },
   {
-    path: "selection",
-    loadChildren: "./selection/selection.module#SelectionModule"
-  },
-  {
-    path: "",
-    redirectTo: "/welcome",
-    pathMatch: "full"
+    path: '',
+    redirectTo: '/figure',
+    pathMatch: 'full'
   }
 ];
 

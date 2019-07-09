@@ -1,0 +1,23 @@
+<div>Podaj następujace parametry:</div>
+
+<form [formGroup]="orderForm">
+  <div
+    formArrayName="items"
+    *ngFor="let item of orderForm.get('items').controls; let i = index"
+  >
+    <div [formGroupName]="i">
+      {{ orderForm.controls.items.controls[i].controls.description.value }}
+      <input formControlName="value" placeholder="Wpisz wartość" />
+    </div>
+  </div>
+
+  <button [disabled]="orderForm.invalid" (click)="calculate()">Oblicz</button>
+  <button (click)="reset()">Reset</button>
+
+  <div *ngIf="score">Wynik {{score}}</div>
+
+
+  <pre>{{ orderForm.value | json }}</pre>
+  <!-- <pre>{{ orderForm.get('value').valid| json }}</pre> -->
+</form>
+

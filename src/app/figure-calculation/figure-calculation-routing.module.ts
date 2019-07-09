@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {SelectionPageComponent} from './selection-page/selection-page.component';
+import {MainComponent} from './containers/main/main.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SelectionPageComponent,
+    component: MainComponent,
   },
 ];
 
@@ -13,5 +13,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SelectionRoutingModule {
+
+export class FigureCalculationRoutingModule {
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StartPageComponent } from './start-page.component';
+import { ChooseCalculationComponent } from './choose-calculation.component';
 
-describe('StartPageComponent', () => {
-  let component: StartPageComponent;
-  let fixture: ComponentFixture<StartPageComponent>;
+describe('ChooseCalculationComponent', () => {
+  let component: ChooseCalculationComponent;
+  let fixture: ComponentFixture<ChooseCalculationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StartPageComponent ]
+      declarations: [ ChooseCalculationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StartPageComponent);
+    fixture = TestBed.createComponent(ChooseCalculationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

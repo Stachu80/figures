@@ -1,0 +1,11 @@
+<app-choose-a-figure [data]="data$ | async"></app-choose-a-figure>
+<app-choose-calculation></app-choose-calculation>
+
+<div *ngIf="(calculation$ | async) && (figure$ | async); then appView"></div>
+
+<ng-template #appView>
+  <app-calculation-form
+    [calculation]="calculation$ | async"
+    [figure]="figure$ | async"
+  ></app-calculation-form>
+</ng-template>

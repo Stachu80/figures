@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-label>Wybierz co chcesz obliczyć</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let item of  calculations" 
+    [value]="item.value"
+    (onSelectionChange)="calculationsSelected($event, item.value)"
+    >
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

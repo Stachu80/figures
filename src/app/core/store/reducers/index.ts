@@ -1,7 +1,8 @@
-import {ActionReducerMap} from '@ngrx/store';
-import {figuresReducer} from './figures.reducer';
-
+import { ActionReducerMap } from '@ngrx/store';
+import { DataReducer } from './data.reducer';
+import { FigureReducer } from './figure.reducer';
 
 export const reducers: ActionReducerMap<{}> = {
-  figures: figuresReducer,
+  data: DataReducer,
+  selectedFigure: FigureReducer
 };
