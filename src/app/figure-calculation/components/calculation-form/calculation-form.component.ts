@@ -1,42 +1,84 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from "@angular/core";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
-  selector: 'app-calculation-form',
-  templateUrl: './calculation-form.component.html',
-  styleUrls: ['./calculation-form.component.scss']
+  selector: "app-calculation-form",
+  templateUrl: "./calculation-form.component.html",
+  styleUrls: ["./calculation-form.component.scss"]
 })
 export class CalculationFormComponent implements OnChanges {
-
+  
   @Input() calculation;
   @Input() figure;
+
   param: Array<string> = [];
- 
-  ngOnChanges(): void {
-    // console.log(this.calc(4));
-    console.log(this.figure)
-    console.log(
-      this.getParamDictionary(this.figure.area.param, 1, 3, 10)
-    )
+  orderForm: FormGroup;
+  items: FormArray;
+  formula: string;
+  score: number;
+
+  constructor(private formBuilder: FormBuilder) {}
+
+  createItem(param: string): FormGroup {
+    return this.formBuilder.group({
+      name: param[0],
+      description: param[1],
+      value: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(10),
+          Validators.pattern("^[0-9]*$")
+        ]
+      ]
+    });
   }
 
-  calc(...args) {
-    this.param = this.figure.area.param;
-    args.forEach((item, index) => {
-      console.log(this.param[index]);
-      window[this.param[index]] = item;
+  ngOnChanges(): void {
+    this.buildForm();
+  }
+
+  buildForm() {
+    this.orderForm = this.formBuilder.group({
+      items: this.formBuilder.array([])
     });
 
-    console.log(this.figure.area.formula);
-    return eval(this.figure.area.formula);
+    this.formula = this.figure[this.calculation].formula;
+    this.figure[this.calculation].param.forEach(param => {
+      this.items = this.orderForm.get("items") as FormArray;
+      this.items.push(this.createItem(param));
+    });
+  }
+  reset(): void {
+    this.orderForm.reset();
+    this.buildForm();
+    this.score = null;
   }
 
-  getParamDictionary(params: string[], ...values: number[]) {
-    console.log(params, values)
+  calculate(): void {
+    const value = this.orderForm.value.items.map(item => +item.value);
+    const obj = this.getParamDictionary(
+      this.figure[this.calculation].param,
+      ...value
+    );
+    Object.keys(obj).forEach(key => {
+      const reg = new RegExp(key, "g");
+      this.formula = this.formula.replace(reg, obj[key]);
+    });
+
+    this.score = eval(this.formula);
+  }
+
+  getParamDictionary(params: string[], ...values: number[]): object {
     return params
       .map((param, i) => ({ param, value: values[i] }))
-      .reduce(( all, curr ) => ({
-        ...all,
-        [curr.param]: curr.value
-      }), {});
+      .reduce(
+        (all, curr) => ({
+          ...all,
+          [curr.param[0]]: curr.value
+        }),
+        {}
+      );
   }
 }
