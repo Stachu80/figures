@@ -1,6 +1,11 @@
 # FiguresApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+
+Aplikacja umożliwia obliczenie pola figury po wypełnieniu formularza 
+Stan aplikacji trzymany jest w ngStore
+
+##Demo 
+https://figures-calculation-form.netlify.com/figure
 
 ## Development server
 
