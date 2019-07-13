@@ -2,7 +2,9 @@
 
 
 Aplikacja umożliwia obliczenie pola figury po wypełnieniu formularza. 
-Stan aplikacji trzymany jest w ngStore
+Stan aplikacji trzymany jest w ngStore.
+Aplikacja może być rozszerzana o kolejne figury poprzez edycje  pliku
+asset/data.json
 
 ##Demo 
 https://figures-calculation-form.netlify.com/figure
