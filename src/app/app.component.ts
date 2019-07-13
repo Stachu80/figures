@@ -10,7 +10,7 @@ import { tap } from 'rxjs/internal/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'figures-app';
+  title = 'Obliczanie pola powierzchni lub obwodu wybranej figury';
   loadingStatus$ = this.store.pipe(
     select(DataSelector.getLoadingStatus),
     tap(v => console.log(v))

@@ -1,21 +1,22 @@
-import { Component, Input, OnChanges } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component, Input, OnChanges } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MathUtils } from '@app/utils/math-utils';
 
 @Component({
-  selector: "app-calculation-form",
-  templateUrl: "./calculation-form.component.html",
-  styleUrls: ["./calculation-form.component.scss"]
+  selector: 'app-calculation-form',
+  templateUrl: './calculation-form.component.html',
+  styleUrls: ['./calculation-form.component.scss']
 })
 export class CalculationFormComponent implements OnChanges {
-  
-  @Input() calculation;
-  @Input() figure;
+  @Input() calculation: string;
+  @Input() figure: string;
 
   param: Array<string> = [];
   orderForm: FormGroup;
   items: FormArray;
   formula: string;
   score: number;
+  calc: string;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -29,13 +30,16 @@ export class CalculationFormComponent implements OnChanges {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(10),
-          Validators.pattern("^[0-9]*$")
+          Validators.pattern('^[0-9]*$')
         ]
       ]
     });
   }
 
   ngOnChanges(): void {
+    this.score = 0;
+    this.calc =
+      this.calculation === 'circumference' ? 'Obwód' : 'Pole powierzchni';
     this.buildForm();
   }
 
@@ -43,13 +47,13 @@ export class CalculationFormComponent implements OnChanges {
     this.orderForm = this.formBuilder.group({
       items: this.formBuilder.array([])
     });
-
     this.formula = this.figure[this.calculation].formula;
     this.figure[this.calculation].param.forEach(param => {
-      this.items = this.orderForm.get("items") as FormArray;
+      this.items = this.orderForm.get('items') as FormArray;
       this.items.push(this.createItem(param));
     });
   }
+
   reset(): void {
     this.orderForm.reset();
     this.buildForm();
@@ -63,11 +67,11 @@ export class CalculationFormComponent implements OnChanges {
       ...value
     );
     Object.keys(obj).forEach(key => {
-      const reg = new RegExp(key, "g");
+      const reg = new RegExp(key, 'g');
       this.formula = this.formula.replace(reg, obj[key]);
     });
 
-    this.score = eval(this.formula);
+    this.score = MathUtils.stringMathOperation(this.formula);
   }
 
   getParamDictionary(params: string[], ...values: number[]): object {

@@ -1,14 +1,15 @@
 <div *ngIf="loadingStatus$ | async; then appView; else preloaderView"></div>
 <ng-template #preloaderView>
-   <mat-spinner></mat-spinner>
+  <div class="wrapper">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
 </ng-template>
 <ng-template #appView>
-  <h1>
-    {{ title }}
-  </h1>
-<!--   <button routerLink="/selection">Selection</button>
-  <button routerLink="/welcome">Welcome</button>
-  <button routerLink="">Home</button>
-  <button (click)="onClick()">test</button> -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Figury</h1>
+      <p class="lead">{{ title }}</p>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </ng-template>

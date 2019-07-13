@@ -12,6 +12,7 @@ export interface Calculation {
   templateUrl: './choose-calculation.component.html',
   styleUrls: ['./choose-calculation.component.scss']
 })
+
 export class ChooseCalculationComponent {
   calculations: Calculation[] = [
     {value: 'area', viewValue: 'Pole Powierzchni'},
