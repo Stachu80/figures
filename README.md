@@ -7,7 +7,7 @@ Aplikacja może być rozszerzana o kolejne figury poprzez edycje  pliku
 asset/data.json
 
 ##Demo 
-https://figures-calculation-form.netlify.com/figure
+https://figures-calculation-form.netlify.com
 
 ## Development server
 
