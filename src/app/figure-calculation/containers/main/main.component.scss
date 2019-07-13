@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.figure-container {
+  margin-right: 20%;
+}
+::ng-deep .mat-form-field {
+  width: 170%;
+  font-size: 1.3rem;
+}

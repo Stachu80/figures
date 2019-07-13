@@ -1,23 +1,43 @@
-<div>Podaj następujace parametry:</div>
-
-<form [formGroup]="orderForm">
-  <div
-    formArrayName="items"
-    *ngFor="let item of orderForm.get('items').controls; let i = index"
-  >
-    <div [formGroupName]="i">
-      {{ orderForm.controls.items.controls[i].controls.description.value }}
-      <input formControlName="value" placeholder="Wpisz wartość" />
+<div class="wrapper">
+  <form [formGroup]="orderForm">
+    <label>Wypełnij poniższe pola</label>
+    <div
+      formArrayName="items"
+      *ngFor="let item of orderForm.get('items').controls; let i = index"
+    >
+      <div class="form-group" [formGroupName]="i">
+        <div class="row-container">
+          <label class="input-group-text">
+            {{
+              orderForm.controls.items.controls[i].controls.description.value
+            }}
+          </label>
+          <div>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="value"
+              placeholder="Wpisz wartość"
+            />
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <button [disabled]="orderForm.invalid" (click)="calculate()">Oblicz</button>
-  <button (click)="reset()">Reset</button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="orderForm.invalid"
+      (click)="calculate()"
+    >
+      Oblicz
+    </button>
+    <button type="submit" class="btn btn-primary" (click)="reset()">
+      Reset
+    </button>
 
-  <div *ngIf="score">Wynik {{score}}</div>
-
-
-  <pre>{{ orderForm.value | json }}</pre>
-  <!-- <pre>{{ orderForm.get('value').valid| json }}</pre> -->
-</form>
-
+    <div *ngIf="score">{{calc}} figury {{figure.name}} wynosi: {{ score }}</div>
+    <!-- <pre>{{ orderForm.value | json }}</pre> -->
+    <!-- <pre>{{ orderForm.get('value').valid| json }}</pre> -->
+  </form>
+</div>

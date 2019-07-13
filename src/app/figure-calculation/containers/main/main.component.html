@@ -1,11 +1,19 @@
-<app-choose-a-figure [data]="data$ | async"></app-choose-a-figure>
-<app-choose-calculation></app-choose-calculation>
-
+<div class="wrapper">
+  <app-choose-a-figure
+    class="figure-container"
+    [data]="data$ | async"
+  ></app-choose-a-figure>
+  <app-choose-calculation
+    class="choose-calculation-container"
+  ></app-choose-calculation>
+</div>
 <div *ngIf="(calculation$ | async) && (figure$ | async); then appView"></div>
 
 <ng-template #appView>
-  <app-calculation-form
-    [calculation]="calculation$ | async"
-    [figure]="figure$ | async"
-  ></app-calculation-form>
+  <div class="wrapper">
+    <app-calculation-form
+      [calculation]="calculation$ | async"
+      [figure]="figure$ | async"
+    ></app-calculation-form>
+  </div>
 </ng-template>

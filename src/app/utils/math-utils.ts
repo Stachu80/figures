@@ -1,10 +1,9 @@
 export class MathUtils {
-    static stringMathOperation(mathOperation: string, ...param): number {
-        console.log(...param)
-        return eval(mathOperation);
+    static stringMathOperation(mathOperation: string): number {
+        return this.normalizeNumber(eval(mathOperation));
     }
 
     static normalizeNumber(badNumber: number): number {
-        return Math.round(badNumber * 1000000000) / 1000000000;
+        return Math.round(badNumber * 1000) / 1000;
     }
 }

@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    align-content: center; 
+    justify-content: center;
+    font-size: 1.3rem;
+    width: 100%;
+  }
+
+  .spinner{
+      position: absolute;
+      top:40%;
+  }
+
+
