@@ -1,7 +1,7 @@
 # FiguresApp
 
 
-Aplikacja umożliwia obliczenie pola figury po wypełnieniu formularza 
+Aplikacja umożliwia obliczenie pola figury po wypełnieniu formularza. 
 Stan aplikacji trzymany jest w ngStore
 
 ##Demo 
