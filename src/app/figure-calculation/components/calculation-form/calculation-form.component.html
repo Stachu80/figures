@@ -3,7 +3,7 @@
     <label>Wypełnij poniższe pola</label>
     <div
       formArrayName="items"
-      *ngFor="let item of orderForm.get('items').controls; let i = index"
+      *ngFor="let item of orderForm.get('items')['controls']; let i = index"
     >
       <div class="form-group" [formGroupName]="i">
         <div class="row-container">
