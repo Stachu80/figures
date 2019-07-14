@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, ChangeDetectorRef } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MathUtils } from '@app/utils/math-utils';
 
@@ -61,17 +61,19 @@ export class CalculationFormComponent implements OnChanges {
   }
 
   calculate(): void {
+    let formulaExp = this.formula;
     const value = this.orderForm.value.items.map(item => +item.value);
     const obj = this.getParamDictionary(
       this.figure[this.calculation].param,
       ...value
     );
+
     Object.keys(obj).forEach(key => {
       const reg = new RegExp(key, 'g');
-      this.formula = this.formula.replace(reg, obj[key]);
+      formulaExp = this.formula.replace(reg, obj[key]);
     });
 
-    this.score = MathUtils.stringMathOperation(this.formula);
+    this.score = MathUtils.stringMathOperation(formulaExp);
   }
 
   getParamDictionary(params: string[], ...values: number[]): object {
