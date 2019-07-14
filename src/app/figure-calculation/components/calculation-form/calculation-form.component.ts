@@ -67,10 +67,10 @@ export class CalculationFormComponent implements OnChanges {
       this.figure[this.calculation].param,
       ...value
     );
-
+    console.log(obj);
     Object.keys(obj).forEach(key => {
       const reg = new RegExp(key, 'g');
-      formulaExp = this.formula.replace(reg, obj[key]);
+      formulaExp =  formulaExp.replace(reg, obj[key]);
     });
 
     this.score = MathUtils.stringMathOperation(formulaExp);
